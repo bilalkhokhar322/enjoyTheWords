@@ -1,0 +1,49 @@
+#GeneralLayout {
+  background-image: url("../gallery/bg.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  #GeneralRow {
+    #sidebar {
+      transition: 0.5s ease-in all;
+
+      #HamBurgerButton {
+        background-color: #382b96;
+      }
+    }
+  }
+  #contentRow {
+    overflow: hidden;
+    #content {
+      background: linear-gradient(
+        121.34deg,
+        rgba(255, 29, 210, 0.2) 0%,
+        rgba(255, 119, 135, 0.4) 100%
+      );
+      margin-top: 4vh;
+      height: 80vh;
+      border-radius: 0px 0px 20px 20px;
+      overflow: auto;
+      padding: 20px;
+      /* width */
+      &::-webkit-scrollbar {
+        width: 5px;
+        height: 50vh !important;
+      }
+
+      /* Track */
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: rgb(225, 0, 255);
+      }
+
+      /* Handle on hover */
+    }
+  }
+}

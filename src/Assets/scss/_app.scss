@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "micross";
+}
+
+@font-face {
+  font-family: "micross";
+  src: local("micross"), url("../font/micross.ttf");
+}
+
+a {
+  text-decoration: none !important;
+}

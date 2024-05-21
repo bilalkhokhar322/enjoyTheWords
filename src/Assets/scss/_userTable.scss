@@ -1,0 +1,27 @@
+#userTable {
+  .table {
+    thead {
+      tr {
+        th {
+          background: #710d8a8a !important;
+          color: white;
+          letter-spacing: 2px !important;
+        }
+      }
+    }
+    tbody {
+      tr {
+        th {
+          background-color: transparent !important;
+          color: white;
+          border: none !important;
+        }
+        td {
+          background-color: transparent !important;
+          color: white;
+          border: none !important;
+        }
+      }
+    }
+  }
+}
