@@ -5,6 +5,7 @@ import { PrivateRoute } from "./Routes/PrivateRoutes";
 import GeneralLayout from "./Layout/GeneralLayout/index";
 import "./Assets/scss/main.scss";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Spinner } from "reactstrap";
 
 const App = () => {
   return (
@@ -27,7 +28,13 @@ const App = () => {
                       isAuth={route.isAuth}
                       theme={route.theme ?? "black"}
                     >
-                      <Suspense fallback={<div>loading...</div>}>
+                      <Suspense
+                        fallback={
+                          <div className="w-100 h-100 border border-danger">
+                            <Spinner color="primary" />
+                          </div>
+                        }
+                      >
                         {!route.isPublic ? (
                           <PrivateRoute
                             props={route}

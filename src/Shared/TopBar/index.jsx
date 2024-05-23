@@ -7,8 +7,13 @@ import {
   DropdownItem,
 } from "reactstrap";
 import MainModal from "../Modal/Modal";
-const logoImage = require("../../Assets/gallery/icon.png");
+import { JournalMedical } from "react-bootstrap-icons";
+import logoImage from "../../Assets/gallery/icon.png";
+import { customLogout } from "../../Redux/features/User/userSlice";
+import { useDispatch } from "react-redux";
+
 const TopBar = () => {
+  const dispatch = useDispatch();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => {
     setDropdownOpen((prevState) => !prevState);
@@ -26,13 +31,20 @@ const TopBar = () => {
   const toggleModal = () => {
     setModal(!modal);
   };
-  console.log("modal", modal);
+
+  const handleLogout = () => {
+    dispatch(customLogout());
+    setModal(!modal);
+  };
+
   return (
     <>
       <div id="Topbar" className="">
         <div className="user">
           <div className="logo">
-            <p className="text-white fw-bold ps-2 m-0 d-sm-block d-none">ENJOY THE WORDS</p>
+            <p className="text-white fw-bold ps-2 m-0 d-sm-block d-none">
+              ENJOY THE WORDS
+            </p>
           </div>
           <div className="image ms-2">
             <i className="bellIcon">{bellIcon}</i>
@@ -60,7 +72,7 @@ const TopBar = () => {
       <MainModal
         modalBodyText={"Do you want to log out of your account?"}
         toggleModal={toggleModal}
-        cancelToggle={() => setModal(false)}
+        cancelToggle={handleLogout}
         modal={modal}
         CancelBtn={"Logout"}
       />

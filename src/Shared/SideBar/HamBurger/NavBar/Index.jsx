@@ -6,6 +6,7 @@ import {
   permissions,
   management,
   userIcon,
+  userLogs,
 } from "../../../../Assets/icons/index";
 
 const NavBar = ({ toggle, onClick }) => {
@@ -28,10 +29,11 @@ const NavBar = ({ toggle, onClick }) => {
       icon: management,
     },
     {
-      name: "User",
+      name: "Users  ",
       to: "/user",
       icon: userIcon,
     },
+    { name: "Users Logs  ", to: "/userLogs", icon: userLogs },
   ];
 
   return (

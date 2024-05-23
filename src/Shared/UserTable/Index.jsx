@@ -1,40 +1,19 @@
-import React, { useEffect } from "react";
-import { Pagination, PaginationItem, PaginationLink, Table } from "reactstrap";
+import { Table } from "reactstrap";
 import { edit, del } from "../../Assets/icons/index";
-import { useDispatch, useSelector } from "react-redux";
-import { listUser } from "../../Redux/features/User/userApi";
-const UserTable = () => {
+import { listUser, deleteUser } from "../../Redux/features/User/userApi";
+import { useDispatch } from "react-redux";
+const UserTable = (props) => {
   const dispatch = useDispatch();
-  const users = useSelector((state) => state.users); // Adjust based on your Redux state shape
-
-  useEffect(() => {
-    const userListData = {
-      apiEndpoint: "/admin/listUser",
+  const handleDelete = (userId) => {
+    const user = {
+      apiEndpoint: `/admin/deleteUser?userId=${userId}`,
     };
-    dispatch(listUser(userListData)).then((res) => {
-      console.log(res);
+    dispatch(deleteUser(user)).then((res) => {
+      if (res.type === "deleteUser/fulfilled") {
+        props.fetchUsers();
+      }
     });
-  }, [dispatch]);
-
-  const tableHeadingArr = [
-    {
-      num: "#",
-      title: "Title",
-      status: "Status",
-      createdAt: "CreatedAt",
-      category: "Category",
-      actions: "Actions",
-    },
-  ];
-  const tableDataArr = [
-    {
-      title: "necessitatibus quo temporibus atque quia optio Sint repellendus.",
-      status: "published",
-      createdAt: "November 14, 2022 5:06 AM",
-      category: "At Labore Lit",
-      actions: "Actions",
-    },
-  ];
+  };
 
   return (
     <>
@@ -43,27 +22,33 @@ const UserTable = () => {
           <br />
           <thead>
             <tr>
-              {tableHeadingArr.map((HeadingArr) => (
+              {props.tableHeadingArr.map((HeadingArr) => (
                 <>
-                  <th>{HeadingArr.num}</th>
-                  <th>{HeadingArr.title}</th>
-                  <th>{HeadingArr.status}</th>
-                  <th>{HeadingArr.createdAt}</th>
-                  <th>{HeadingArr.category}</th>
-                  <th>{HeadingArr.actions}</th>
+                  <th className={HeadingArr === "Actions" ? "text-center" : ""}>
+                    {HeadingArr}
+                  </th>
                 </>
               ))}
             </tr>
           </thead>
           <tbody>
-            {tableDataArr.map((DataArr, index) => (
-              <tr>
+            {props.userInfo?.map((DataArr, index) => (
+              <tr key={DataArr.id}>
                 <>
                   <th scope="row">{index + 1}</th>
-                  <td>{DataArr.title}</td>
-                  <td>{DataArr.status}</td>
-                  <td>{DataArr.createdAt}</td>
-                  <td>{DataArr.category}</td>
+                  <td>{DataArr}</td>
+
+                  <td>
+                    <span
+                      class={
+                        DataArr.isVerified
+                          ? `border border-success fw-light badge badge-pill bg-success`
+                          : `border border-danger fw-light badge badge-pill bg-danger `
+                      }
+                    >
+                      {DataArr.isVerified ? "Verified" : "No Verified"}
+                    </span>
+                  </td>
                   <td>
                     <div className="d-flex justify-content-evenly">
                       <i
@@ -74,6 +59,9 @@ const UserTable = () => {
                         {edit}
                       </i>
                       <i
+                        onClick={() => {
+                          handleDelete(DataArr.id);
+                        }}
                         style={{
                           cursor: "pointer",
                         }}

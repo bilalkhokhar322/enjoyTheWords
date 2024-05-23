@@ -75,6 +75,17 @@ export const deleteAccount = createAsyncThunk(
     }
   }
 );
+export const deleteUser = createAsyncThunk(
+  "deleteUser",
+  async ({ apiEndpoint }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.delete(apiEndpoint);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
 
 export const getUserProfile = createAsyncThunk(
   "getUserProfile",
@@ -90,6 +101,17 @@ export const getUserProfile = createAsyncThunk(
 
 export const listUser = createAsyncThunk(
   "listUser",
+  async ({ apiEndpoint }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(apiEndpoint);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+)
+export const userLogs = createAsyncThunk(
+  "userLogs",
   async ({ apiEndpoint }, thunkAPI) => {
     try {
       const response = await axiosInstance.get(apiEndpoint);

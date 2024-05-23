@@ -36,6 +36,13 @@ const routes = [
     theme: "dark",
     exact: true,
   },
+  {
+    path: "/userLogs",
+    component: lazy(() => import("../Pages/usersLogs/Index.jsx")),
+    isPublic: false,
+    theme: "dark",
+    exact: true,
+  },
 ];
 
 export default routes;

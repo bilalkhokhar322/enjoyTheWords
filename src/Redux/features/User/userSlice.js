@@ -8,6 +8,8 @@ import {
   changePassword,
   getUserProfile,
   listUser,
+  userLogs,
+  deleteUser,
 } from "./userApi";
 
 export const userSlice = createSlice({
@@ -21,6 +23,7 @@ export const userSlice = createSlice({
   reducers: {
     customLogout: (state) => {
       state.user = null;
+      state.token = null;
     },
   },
   extraReducers: (builder) => {
@@ -130,6 +133,28 @@ export const userSlice = createSlice({
       })
 
       .addCase(listUser.rejected, (state) => {
+        state.loading = "failed";
+      })
+      .addCase(userLogs.pending, (state) => {
+        state.loading = "pending";
+      })
+
+      .addCase(userLogs.fulfilled, (state, action) => {
+        state.loading = "succeeded";
+      })
+
+      .addCase(userLogs.rejected, (state) => {
+        state.loading = "failed";
+      })
+      .addCase(deleteUser.pending, (state) => {
+        state.loading = "pending";
+      })
+
+      .addCase(deleteUser.fulfilled, (state, action) => {
+        state.loading = "succeeded";
+      })
+
+      .addCase(deleteUser.rejected, (state) => {
         state.loading = "failed";
       });
   },
