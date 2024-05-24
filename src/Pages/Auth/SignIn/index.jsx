@@ -48,7 +48,6 @@ const SignIn = () => {
       },
     });
 
-  console.log(values.email);
   return (
     <div id="SignIn" className=" h-100 ">
       <Row className="h-100">

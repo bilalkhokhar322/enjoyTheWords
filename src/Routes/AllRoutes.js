@@ -43,6 +43,13 @@ const routes = [
     theme: "dark",
     exact: true,
   },
+  {
+    path: "/uploadLogo",
+    component: lazy(() => import("../Pages/uploadLogo/Index.jsx")),
+    isPublic: false,
+    theme: "dark",
+    exact: true,
+  },
 ];
 
 export default routes;

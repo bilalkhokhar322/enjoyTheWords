@@ -99,8 +99,8 @@ export const getUserProfile = createAsyncThunk(
   }
 );
 
-export const listUser = createAsyncThunk(
-  "listUser",
+export const userListing = createAsyncThunk(
+  "userListing",
   async ({ apiEndpoint }, thunkAPI) => {
     try {
       const response = await axiosInstance.get(apiEndpoint);
@@ -109,7 +109,7 @@ export const listUser = createAsyncThunk(
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }
-)
+);
 export const userLogs = createAsyncThunk(
   "userLogs",
   async ({ apiEndpoint }, thunkAPI) => {

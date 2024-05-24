@@ -9,9 +9,9 @@ const MainModal = ({
   modal,
   Modaltitle,
   cancelToggle,
-  CancelBtn
+  CancelBtn,
 }) => {
-  console.log({ toggleModal });
+
 
   return (
     <div>

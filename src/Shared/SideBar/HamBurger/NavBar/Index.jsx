@@ -7,11 +7,11 @@ import {
   management,
   userIcon,
   userLogs,
+  upload,
 } from "../../../../Assets/icons/index";
 
 const NavBar = ({ toggle, onClick }) => {
   let { pathname } = useLocation();
-  console.log(pathname);
   const LinkItems = [
     {
       name: "Dashboard",
@@ -33,7 +33,17 @@ const NavBar = ({ toggle, onClick }) => {
       to: "/user",
       icon: userIcon,
     },
-    { name: "Users Logs  ", to: "/userLogs", icon: userLogs },
+    {
+      name: "Users Logs  ",
+      to: "/userLogs",
+      icon: userLogs,
+    },
+
+    {
+      name: "Upload Logo  ",
+      to: "/uploadLogo",
+      icon: upload,
+    },
   ];
 
   return (

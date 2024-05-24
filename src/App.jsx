@@ -30,7 +30,7 @@ const App = () => {
                     >
                       <Suspense
                         fallback={
-                          <div className="w-100 h-100 border border-danger">
+                          <div className="w-100 h-100 border border-danger d-flex justify-content-center align-items-center">
                             <Spinner color="primary" />
                           </div>
                         }

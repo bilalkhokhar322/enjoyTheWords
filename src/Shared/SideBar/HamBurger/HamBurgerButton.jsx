@@ -1,6 +1,5 @@
 const HamBurgerButton = ({ toggle, onClick }) => {
-  console.log(toggle);
-  console.log(onClick);
+
   return (
     <div className="">
       <button

@@ -7,7 +7,7 @@ import {
   deleteAccount,
   changePassword,
   getUserProfile,
-  listUser,
+  userListing,
   userLogs,
   deleteUser,
 } from "./userApi";
@@ -124,15 +124,15 @@ export const userSlice = createSlice({
         state.loading = "failed";
       })
 
-      .addCase(listUser.pending, (state) => {
+      .addCase(userListing.pending, (state) => {
         state.loading = "pending";
       })
 
-      .addCase(listUser.fulfilled, (state, action) => {
+      .addCase(userListing.fulfilled, (state, action) => {
         state.loading = "succeeded";
       })
 
-      .addCase(listUser.rejected, (state) => {
+      .addCase(userListing.rejected, (state) => {
         state.loading = "failed";
       })
       .addCase(userLogs.pending, (state) => {
