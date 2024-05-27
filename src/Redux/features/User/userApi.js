@@ -109,12 +109,24 @@ export const userListing = createAsyncThunk(
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }
-);
+)
 export const userLogs = createAsyncThunk(
   "userLogs",
   async ({ apiEndpoint }, thunkAPI) => {
     try {
       const response = await axiosInstance.get(apiEndpoint);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+)
+export const UpLoadLogo = createAsyncThunk(
+  "UpLoadLogo",
+  async ({ apiEndpoint }, thunkAPI) => {
+    try {
+      console.log("api UpLoadLogo")
+      const response = await axiosInstance.post(apiEndpoint);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error?.response?.data);

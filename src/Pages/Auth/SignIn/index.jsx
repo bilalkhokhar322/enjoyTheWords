@@ -51,13 +51,6 @@ const SignIn = () => {
   return (
     <div id="SignIn" className=" h-100 ">
       <Row className="h-100">
-        {/* <Col md={6} className="left border border-success">
-          <div className="logo image-fluid">
-            <img img="image-fluid" src={circle} alt="" />
-            <div className="mainLogo w-auto">
-            </div>
-            </div>
-          </Col> */}
         <Col md={12} className="formCol">
           <Row className="justify-content-center align-items-center h-100">
             <Col md={5} className="">

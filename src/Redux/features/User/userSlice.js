@@ -10,6 +10,7 @@ import {
   userListing,
   userLogs,
   deleteUser,
+  UpLoadLogo,
 } from "./userApi";
 
 export const userSlice = createSlice({
@@ -155,6 +156,17 @@ export const userSlice = createSlice({
       })
 
       .addCase(deleteUser.rejected, (state) => {
+        state.loading = "failed";
+      })
+      .addCase(UpLoadLogo.pending, (state) => {
+        state.loading = "pending";
+      })
+
+      .addCase(UpLoadLogo.fulfilled, (state, action) => {
+        state.loading = "succeeded";
+      })
+
+      .addCase(UpLoadLogo.rejected, (state) => {
         state.loading = "failed";
       });
   },

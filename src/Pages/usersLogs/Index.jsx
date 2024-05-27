@@ -7,18 +7,14 @@ import { deleteUser, userLogs } from "../../Redux/features/User/userApi";
 
 const Index = () => {
   const tableHeadingArr = [
-    "#",
-    "User Id",
+    "Name",
     "Method",
     "URL",
     "Status",
-    "Response Time",
-    "TimeIn GST",
+    "Res/Time",
+    "GST",
     "User Ip",
-    "User Name",
     "Created At",
-    "Updated At",
-    "Action",
   ];
   const dispatch = useDispatch();
 
@@ -33,38 +29,14 @@ const Index = () => {
       <>
         {usersData?.map((data, index) => (
           <tr>
-            <td>{index + 1}</td>
-            <td>{data?.userId}</td>
+            <td>{data?.userName}</td>
             <td>{data?.method}</td>
             <td>{data?.url}</td>
             <td>{data?.status}</td>
             <td>{data?.responseTime}</td>
             <td>{data?.timeInGST}</td>
             <td>{data?.userIp}</td>
-            <td>{data?.userName}</td>
             <td>{data?.createdAt}</td>
-            <td>{data?.updatedAt}</td>
-            <td>
-              <div className="d-flex justify-content-evenly">
-                <i
-                  style={{
-                    cursor: "pointer",
-                  }}
-                >
-                  {edit}
-                </i>
-                <i
-                  onClick={() => {
-                    handleDelete(data.id);
-                  }}
-                  style={{
-                    cursor: "pointer",
-                  }}
-                >
-                  {del}
-                </i>
-              </div>
-            </td>
           </tr>
         ))}
       </>
