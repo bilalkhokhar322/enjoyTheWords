@@ -4,17 +4,18 @@ import UserTable from "../../Shared/UserTable/Index";
 import { useDispatch } from "react-redux";
 import { edit, del } from "../../Assets/icons/index";
 import { deleteUser, userLogs } from "../../Redux/features/User/userApi";
+import moment from "moment";
 
 const Index = () => {
   const tableHeadingArr = [
     "Name",
     "Method",
     "URL",
-    "Status",
     "Res/Time",
     "GST",
     "User Ip",
     "Created At",
+    "Status",
   ];
   const dispatch = useDispatch();
 
@@ -28,15 +29,70 @@ const Index = () => {
     setTableData(
       <>
         {usersData?.map((data, index) => (
-          <tr>
-            <td>{data?.userName}</td>
-            <td>{data?.method}</td>
-            <td>{data?.url}</td>
-            <td>{data?.status}</td>
-            <td>{data?.responseTime}</td>
-            <td>{data?.timeInGST}</td>
-            <td>{data?.userIp}</td>
-            <td>{data?.createdAt}</td>
+          <tr className="">
+            <td
+              style={{
+                fontSize: "13px",
+              }}
+            >
+              {data?.userName}
+            </td>
+            <td
+              style={{
+                fontSize: "13px",
+              }}
+            >
+              {data?.method}
+            </td>
+            <td
+              style={{
+                fontSize: "13px",
+              }}
+            >
+              {data?.url}
+            </td>
+            <td
+              style={{
+                fontSize: "13px",
+              }}
+            >
+              {data?.responseTime}
+              {/* {moment(data?.responseTime, "HH:mm").format("hh:mm A")} */}
+              {/* {moment(data.responseTime, ["HH:mm:ss", "HH:mm:ss.SSS"]).format( */}
+              {/* "hh:mm A" )} */}
+              {console.log(data?.responseTime)}
+            </td>
+            <td
+              style={{
+                fontSize: "13px",
+              }}
+            >
+              {moment(data?.timeInGST).format("DD-MMM-YYYY")}
+            </td>
+            <td
+              style={{
+                fontSize: "13px",
+              }}
+            >
+              {data?.userIp}
+            </td>
+            <td
+              style={{
+                fontSize: "13px",
+              }}
+            >
+              {moment(data?.createdAt).format("DD-MMM-YYYY")}
+            </td>
+
+            <span
+              className={
+                data?.status >= 200 && data?.status <= 299
+                  ? "border border-success fw-light badge badge-pill bg-success"
+                  : "border border-danger fw-light badge badge-pill bg-danger"
+              }
+            >
+              <td>{data?.status}</td>
+            </span>
           </tr>
         ))}
       </>
