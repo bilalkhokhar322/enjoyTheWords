@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Input, Label } from "reactstrap";
 import { eye, eyeSlash } from "../../Assets/icons/index";
-import { type } from "@testing-library/user-event/dist/type";
 
 const MainInput = (props) => {
   const [showPassword, setShowPassword] = useState(true);

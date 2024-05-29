@@ -40,7 +40,7 @@ const Permissions = () => {
       <Col md={12} className="">
         <div>
           <br />
-          <h2 className="text-white">Selected Permissions</h2>
+          <h2 className="text-white">Roles & Permissions</h2>
           <br />
           <br />
           {PermissionsArr.map((item, index) => (

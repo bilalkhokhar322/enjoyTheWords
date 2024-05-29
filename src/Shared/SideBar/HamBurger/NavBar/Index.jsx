@@ -8,6 +8,7 @@ import {
   userIcon,
   userLogs,
   upload,
+  userControl,
 } from "../../../../Assets/icons/index";
 
 const NavBar = ({ toggle, onClick }) => {
@@ -43,6 +44,11 @@ const NavBar = ({ toggle, onClick }) => {
       name: "Upload Logo  ",
       to: "/uploadLogo",
       icon: upload,
+    },
+    {
+      name: "User Control",
+      to: "/userControl",
+      icon: userControl,
     },
   ];
 

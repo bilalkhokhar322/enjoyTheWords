@@ -38,7 +38,7 @@ const routes = [
   },
   {
     path: "/userLogs",
-    component: lazy(() => import("../Pages/usersLogs/Index.jsx")),
+    component: lazy(() => import("../Pages/UsersLogs/Index.jsx")),
     isPublic: false,
     theme: "dark",
     exact: true,
@@ -46,6 +46,13 @@ const routes = [
   {
     path: "/uploadLogo",
     component: lazy(() => import("../Pages/uploadLogo/Index.jsx")),
+    isPublic: false,
+    theme: "dark",
+    exact: true,
+  },
+  {
+    path: "/userControl",
+    component: lazy(() => import("../Pages/userControl/Index.jsx")),
     isPublic: false,
     theme: "dark",
     exact: true,

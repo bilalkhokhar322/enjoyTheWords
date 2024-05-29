@@ -5,7 +5,8 @@ import { PrivateRoute } from "./Routes/PrivateRoutes";
 import GeneralLayout from "./Layout/GeneralLayout/index";
 import "./Assets/scss/main.scss";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Spinner } from "reactstrap";
+import Loader from "./Shared/Loader/Index";
+
 
 const App = () => {
   return (
@@ -30,8 +31,8 @@ const App = () => {
                     >
                       <Suspense
                         fallback={
-                          <div className="w-100 h-100 border border-danger d-flex justify-content-center align-items-center">
-                            <Spinner color="primary" />
+                          <div className="w-100 h-100 d-flex justify-content-center align-items-center">
+                            <Loader/>
                           </div>
                         }
                       >

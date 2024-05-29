@@ -1,5 +1,10 @@
 import { Table } from "reactstrap";
+import Loader from "../Loader/Index";
+import { useSelector } from "react-redux";
+
 const UserTable = (props) => {
+  const { loading } = useSelector((state) => state.user);
+
   return (
     <>
       <div id="tableWrapper">
@@ -16,8 +21,10 @@ const UserTable = (props) => {
               ))}
             </tr>
           </thead>
+
           <tbody>{props?.bodyData}</tbody>
         </Table>
+        {loading === "pending" && <Loader />}
       </div>
     </>
   );

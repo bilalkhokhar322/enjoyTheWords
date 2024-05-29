@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import HeadingText from "../../Shared/MainHeading/Index";
 import UserTable from "../../Shared/UserTable/Index";
 import { useDispatch } from "react-redux";
-import { edit, del } from "../../Assets/icons/index";
-import { deleteUser, userLogs } from "../../Redux/features/User/userApi";
+import { userLogs } from "../../Redux/features/User/userApi";
 import moment from "moment";
 
-const Index = () => {
+const UsersLogs = () => {
   const tableHeadingArr = [
     "Name",
     "Method",
@@ -18,17 +17,17 @@ const Index = () => {
     "Status",
   ];
   const dispatch = useDispatch();
-
-  const [usersData, setUsersData] = useState([]);
+  const [logsData, setLogsData] = useState([]);
   const [tableData, setTableData] = useState("");
+
   useEffect(() => {
-    fetchUsers();
+    fetchLogs();
   }, [dispatch]);
 
   useEffect(() => {
     setTableData(
       <>
-        {usersData?.map((data, index) => (
+        {logsData?.map((data) => (
           <tr className="">
             <td
               style={{
@@ -97,31 +96,19 @@ const Index = () => {
         ))}
       </>
     );
-  }, [usersData]);
-
-  const handleDelete = (userId) => {
-    const user = {
-      apiEndpoint: `/admin/deleteUser?userId=${userId}`,
-    };
-    dispatch(deleteUser(user)).then((res) => {
-      if (res.type === "deleteUser/fulfilled") {
-        fetchUsers();
-      }
-    });
-  };
-
-  const fetchUsers = () => {
+  }, [logsData]);
+  const fetchLogs = () => {
     const data = {
       apiEndpoint: "/admin/logs",
     };
     dispatch(userLogs(data)).then((res) => {
       if (res.type === "userLogs/fulfilled") {
-        setUsersData(res?.payload?.data);
+        setLogsData(res?.payload?.data);
       }
     });
   };
 
-  console.log(usersData);
+  console.log(logsData);
   return (
     <>
       <HeadingText className={"text-white display-5"} Text={"Users"} />
@@ -130,4 +117,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default UsersLogs;
