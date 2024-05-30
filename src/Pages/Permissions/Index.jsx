@@ -12,7 +12,6 @@ const Permissions = () => {
     "Upload",
   ];
 
-  console.log(permissionData);
 
   // const handleCheckboxChange = (event) => {     // this code save inputs Values
   //   const value = event.target.value;

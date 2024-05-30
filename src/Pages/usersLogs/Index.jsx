@@ -24,6 +24,8 @@ const UsersLogs = () => {
     fetchLogs();
   }, [dispatch]);
 
+  console.log(logsData);
+
   useEffect(() => {
     setTableData(
       <>
@@ -46,6 +48,7 @@ const UsersLogs = () => {
             <td
               style={{
                 fontSize: "13px",
+                width: "10px",
               }}
             >
               {data?.url}
@@ -56,10 +59,6 @@ const UsersLogs = () => {
               }}
             >
               {data?.responseTime}
-              {/* {moment(data?.responseTime, "HH:mm").format("hh:mm A")} */}
-              {/* {moment(data.responseTime, ["HH:mm:ss", "HH:mm:ss.SSS"]).format( */}
-              {/* "hh:mm A" )} */}
-              {console.log(data?.responseTime)}
             </td>
             <td
               style={{
@@ -99,19 +98,18 @@ const UsersLogs = () => {
   }, [logsData]);
   const fetchLogs = () => {
     const data = {
-      apiEndpoint: "/admin/logs",
+      apiEndpoint: `/admin/logs?page=${1}&size=${10}`,
     };
     dispatch(userLogs(data)).then((res) => {
       if (res.type === "userLogs/fulfilled") {
-        setLogsData(res?.payload?.data);
+        setLogsData(res?.payload?.data?.logs);
       }
     });
   };
 
-  console.log(logsData);
   return (
     <>
-      <HeadingText className={"text-white display-5"} Text={"Users"} />
+      <HeadingText className={"text-white display-5"} Text={"Users Logs"} />
       <UserTable headerData={tableHeadingArr} bodyData={tableData} />
     </>
   );

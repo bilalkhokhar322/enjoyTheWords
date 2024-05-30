@@ -45,14 +45,14 @@ const routes = [
   },
   {
     path: "/uploadLogo",
-    component: lazy(() => import("../Pages/uploadLogo/Index.jsx")),
+    component: lazy(() => import("../Pages/UploadLogo/Index.jsx")),
     isPublic: false,
     theme: "dark",
     exact: true,
   },
   {
-    path: "/userControl",
-    component: lazy(() => import("../Pages/userControl/Index.jsx")),
+    path: "/availableHits",
+    component: lazy(() => import("../Pages/AvailableHits/Index.jsx")),
     isPublic: false,
     theme: "dark",
     exact: true,

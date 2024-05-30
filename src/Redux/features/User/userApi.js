@@ -32,7 +32,7 @@ export const changePassword = createAsyncThunk(
   "changePassword",
   async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
-      const response = await axiosInstance.post(apiEndpoint, requestData);
+      const response = await axiosInstance.put(apiEndpoint, requestData);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error?.response?.data);
@@ -125,8 +125,18 @@ export const UpLoadLogo = createAsyncThunk(
   "UpLoadLogo",
   async ({ apiEndpoint }, thunkAPI) => {
     try {
-      console.log("api UpLoadLogo")
       const response = await axiosInstance.post(apiEndpoint);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+)
+export const availableHits = createAsyncThunk(
+  "availableHits",
+  async ({ apiEndpoint }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.put(apiEndpoint);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error?.response?.data);

@@ -11,6 +11,7 @@ import {
   userLogs,
   deleteUser,
   UpLoadLogo,
+  availableHits,
 } from "./userApi";
 
 export const userSlice = createSlice({
@@ -167,6 +168,17 @@ export const userSlice = createSlice({
       })
 
       .addCase(UpLoadLogo.rejected, (state) => {
+        state.loading = "failed";
+      })
+      .addCase(availableHits.pending, (state) => {
+        state.loading = "pending";
+      })
+
+      .addCase(availableHits.fulfilled, (state, action) => {
+        state.loading = "succeeded";
+      })
+
+      .addCase(availableHits.rejected, (state) => {
         state.loading = "failed";
       });
   },

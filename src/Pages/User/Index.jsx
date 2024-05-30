@@ -63,6 +63,7 @@ const User = () => {
     );
   }, [usersData]);
 
+  console.log(usersData);
   const handleDelete = (userId) => {
     const user = {
       apiEndpoint: `/admin/deleteUser?userId=${userId}`,
@@ -76,11 +77,12 @@ const User = () => {
 
   const fetchUsers = () => {
     const data = {
-      apiEndpoint: "/admin/listUser",
+      apiEndpoint: `/admin/listUser?page=${1}&size=${10}`,
     };
     dispatch(userListing(data)).then((res) => {
       if (res.type === "userListing/fulfilled") {
-        setUsersData(res?.payload?.data?.Total_user?.rows);
+        // setUsersData(res);
+        setUsersData(res?.payload?.data?.users);
       }
     });
   };

@@ -1,18 +1,29 @@
 import React, { useState } from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
+import {
+  Button,
+  Col,
+  Form,
+  FormGroup,
+  Input,
+  Label,
+  Row,
+  Spinner,
+} from "reactstrap";
 import MainInput from "../../../Shared/Input/MainInput";
 // const mainLogo = require("../../../Assets/gallery/ShazamLoog.png");
 import mainLogo from "../../../Assets/gallery/ShazamLoog.png";
 import { login } from "../../../Redux/features/User/userApi";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const { loading } = useSelector((state) => state.user);
+  
   const handleLoginSubmit = (values) => {
     const data = {
       apiEndpoint: "/admin/login",
@@ -96,7 +107,7 @@ const SignIn = () => {
 
                   <div className="text-end mt-5">
                     <Button type="submit" className="bg-info border-0 w-100">
-                      Create account
+                      {loading === "pending" ? <Spinner /> : "Create account"}
                     </Button>
                   </div>
                 </Form>

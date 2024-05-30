@@ -11,8 +11,10 @@ import { JournalMedical } from "react-bootstrap-icons";
 import logoImage from "../../Assets/gallery/icon.png";
 import { customLogout } from "../../Redux/features/User/userSlice";
 import { useDispatch } from "react-redux";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const TopBar = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => {
@@ -35,6 +37,7 @@ const TopBar = () => {
   const handleLogout = () => {
     dispatch(customLogout());
     setModal(!modal);
+    navigate("/")
   };
 
   return (

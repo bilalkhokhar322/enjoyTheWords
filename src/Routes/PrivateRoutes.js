@@ -7,7 +7,7 @@ export function PrivateRoute({ Component, role, props }) {
   const { user } = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (user === null) {
+    if (!user) {
       navigate("/");
     }
   }, [navigate, user]);
