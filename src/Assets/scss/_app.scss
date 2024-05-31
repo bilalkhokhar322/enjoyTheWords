@@ -12,3 +12,39 @@
 a {
   text-decoration: none !important;
 }
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  position: sticky;
+  align-items: center;
+  justify-content: start;
+  .previous,
+  .next {
+    margin: 0px 30px;
+    text-decoration: none;
+  }
+  .canonical {
+    border: 1px solid rgb(2, 41, 4);
+  }
+  li {
+    margin: 0 5px;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    padding-top: 1px;
+  }
+  li.active {
+    font-weight: bold;
+    color: #0bc6fb;
+    border: 2px solid #0bc6fb;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+}
