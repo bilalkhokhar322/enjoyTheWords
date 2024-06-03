@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import React, { useEffect, useState } from "react";
-import { edit, del } from "../../Assets/icons/index";
+import { edit, del, previous, next } from "../../Assets/icons/index";
 import UserTable from "../../Shared/UserTable/Index";
 import HeadingText from "../../Shared/MainHeading/Index";
 import { deleteUser, userListing } from "../../Redux/features/User/userApi";
@@ -109,6 +109,8 @@ const User = () => {
           onPageChange={handlePageClick} // Function to handle page click
           containerClassName={"pagination"}
           activeClassName={"active"}
+          previousLabel={previous} // Define previous label
+          nextLabel={next} // Define next label
         />
       )}
     </>

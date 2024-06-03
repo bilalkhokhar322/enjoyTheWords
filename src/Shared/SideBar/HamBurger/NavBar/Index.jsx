@@ -50,6 +50,11 @@ const NavBar = ({ toggle, onClick }) => {
       to: "/availableHits",
       icon: availableHits,
     },
+    {
+      name: "Captcha",
+      to: "/captcha",
+      icon: availableHits,
+    },
   ];
 
   return (

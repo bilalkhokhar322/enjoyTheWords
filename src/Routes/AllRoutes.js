@@ -57,6 +57,13 @@ const routes = [
     theme: "dark",
     exact: true,
   },
+  {
+    path: "/captcha",
+    component: lazy(() => import("../Pages/Captcha/Index.jsx")),
+    isPublic: false,
+    theme: "dark",
+    exact: true,
+  },
 ];
 
 export default routes;

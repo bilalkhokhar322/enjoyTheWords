@@ -6,6 +6,7 @@ import { userLogs } from "../../Redux/features/User/userApi";
 import moment from "moment";
 import ReactPaginate from "react-paginate";
 import { PER_PAGE_SIZE } from "../../utils/constants";
+import { next, previous } from "../../Assets/icons";
 
 const UsersLogs = () => {
   const tableHeadingArr = [
@@ -60,7 +61,7 @@ const UsersLogs = () => {
   }, [logsData]);
 
   const fetchLogs = () => {
-    const pageNumber = currentPage + 1; 
+    const pageNumber = currentPage + 1;
     const data = {
       apiEndpoint: `/admin/logs?page=${pageNumber}&size=${PER_PAGE_SIZE}`,
     };
@@ -84,12 +85,14 @@ const UsersLogs = () => {
 
       {logsData.length > 0 && (
         <ReactPaginate
-          pageCount={Math.ceil(pageCount)}
-          pageRangeDisplayed={3}
-          marginPagesDisplayed={3}
-          onPageChange={handlePageClick}
+          pageCount={Math.ceil(pageCount)} // Total number of pages
+          pageRangeDisplayed={3} // Number of page links to display
+          marginPagesDisplayed={3} // Number of pages to display at the margins
+          onPageChange={handlePageClick} // Function to handle page click
           containerClassName={"pagination"}
           activeClassName={"active"}
+          previousLabel={previous} // Define previous label
+          nextLabel={next} // Define next label
         />
       )}
     </>

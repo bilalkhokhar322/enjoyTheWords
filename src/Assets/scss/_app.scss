@@ -19,7 +19,8 @@ a {
   padding: 0;
   position: sticky;
   align-items: center;
-  justify-content: start;
+  justify-content: end;
+
   .previous,
   .next {
     margin: 0px 30px;
@@ -38,13 +39,6 @@ a {
   li.active {
     font-weight: bold;
     color: #0bc6fb;
-    border: 2px solid #0bc6fb;
-    width: 40px;
-    height: 40px;
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin: 0;
   }
 }
