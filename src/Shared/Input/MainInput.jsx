@@ -20,6 +20,8 @@ const MainInput = (props) => {
           value={props.values}
           onChange={props.onChange}
           placeholder={props.placeholder}
+          pattern={props.pattern}
+          inputMode={props.inputMode}
         />
         {props.type === "password" && (
           <span

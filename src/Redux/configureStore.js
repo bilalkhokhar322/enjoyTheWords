@@ -8,7 +8,6 @@ import {
   applyMiddleware,
 } from "@reduxjs/toolkit";
 
-
 const persistConfig = {
   key: "root",
   storage,
@@ -20,19 +19,13 @@ const rootReducer = combineReducers({
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-
 export const store = configureStore(
-  {reducer: persistedReducer},
+  { reducer: persistedReducer },
   applyMiddleware(thunk)
 );
 
 export const persistor = persistStore(store);
 
-export default store;
-
-
-
-
+// export default store;
 
 // import { combineReducers } from "redux";
-

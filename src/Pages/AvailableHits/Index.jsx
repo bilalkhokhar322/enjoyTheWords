@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { Button, Col, Form, FormGroup, Input, Row } from "reactstrap";
@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { availableHits } from "../../Redux/features/User/userApi";
 import HeadingText from "../../Shared/MainHeading/Index";
 const AvailableHitsUsers = () => {
+  const [availableHitsNum, setAvailableHitsNum] = useState();
   const dispatch = useDispatch();
 
   const HandleHitsUsers = () => {
@@ -27,14 +28,16 @@ const AvailableHitsUsers = () => {
   const { values, handleSubmit, errors, handleChange, touched, setFieldValue } =
     useFormik({
       initialValues: {
-        count: "",
+        count: availableHitsNum ? availableHitsNum : "",
       },
       validationSchema: formValidation,
       onSubmit(values) {
+        setAvailableHitsNum(values?.count);
         HandleHitsUsers(values);
       },
     });
 
+  console.log(availableHitsNum);
   return (
     <>
       <HeadingText className={"text-white"} Text={"Control User List"} />
@@ -49,7 +52,7 @@ const AvailableHitsUsers = () => {
                   pattern="[0-9]*" // Set pattern to allow only numeric input
                   name="count"
                   onChange={handleChange}
-                  value={values.count}
+                  value={availableHitsNum ? availableHitsNum : values.count}
                 />
                 {errors.count && touched.count && (
                   <div className="fs-5 error text-danger">{errors.count}</div>

@@ -19,16 +19,16 @@ const NavBar = ({ toggle, onClick }) => {
       to: "/dashboard",
       icon: dashboard,
     },
-    {
-      name: "Permissions",
-      to: "/permissions",
-      icon: permissions,
-    },
-    {
-      name: "Management",
-      to: "/management",
-      icon: management,
-    },
+    // {
+    //   name: "Permissions",
+    //   to: "/permissions",
+    //   icon: permissions,
+    // },
+    // {
+    //   name: "Management",
+    //   to: "/management",
+    //   icon: management,
+    // },
     {
       name: "Users  ",
       to: "/user",
@@ -50,11 +50,11 @@ const NavBar = ({ toggle, onClick }) => {
       to: "/availableHits",
       icon: availableHits,
     },
-    {
-      name: "Captcha",
-      to: "/captcha",
-      icon: availableHits,
-    },
+    // {
+    //   name: "Captcha",
+    //   to: "/captcha",
+    //   icon: availableHits,
+    // },
   ];
 
   return (

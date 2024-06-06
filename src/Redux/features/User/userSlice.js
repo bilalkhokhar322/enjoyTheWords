@@ -12,6 +12,8 @@ import {
   deleteUser,
   UpLoadLogo,
   availableHits,
+  forgetPassword,
+  resetPassword,
 } from "./userApi";
 
 export const userSlice = createSlice({
@@ -83,6 +85,18 @@ export const userSlice = createSlice({
       })
 
       .addCase(signUp.rejected, (state) => {
+        state.loading = "failed";
+      })
+      .addCase(resetPassword.pending, (state) => {
+        state.loading = "pending";
+      })
+
+      .addCase(resetPassword.fulfilled, (state, action) => {
+        state.loading = "succeeded";
+        state.email = action.payload;
+      })
+
+      .addCase(resetPassword.rejected, (state) => {
         state.loading = "failed";
       })
 
@@ -157,6 +171,17 @@ export const userSlice = createSlice({
       })
 
       .addCase(deleteUser.rejected, (state) => {
+        state.loading = "failed";
+      })
+      .addCase(forgetPassword.pending, (state) => {
+        state.loading = "pending";
+      })
+
+      .addCase(forgetPassword.fulfilled, (state, action) => {
+        state.loading = "succeeded";
+      })
+
+      .addCase(forgetPassword.rejected, (state) => {
         state.loading = "failed";
       })
       .addCase(UpLoadLogo.pending, (state) => {

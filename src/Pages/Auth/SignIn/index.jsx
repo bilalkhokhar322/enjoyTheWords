@@ -12,18 +12,17 @@ import {
   Spinner,
 } from "reactstrap";
 import MainInput from "../../../Shared/Input/MainInput";
-// const mainLogo = require("../../../Assets/gallery/ShazamLoog.png");
 import mainLogo from "../../../Assets/gallery/ShazamLoog.png";
 import { login } from "../../../Redux/features/User/userApi";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { loading } = useSelector((state) => state.user);
-  
+
   const handleLoginSubmit = (values) => {
     const data = {
       apiEndpoint: "/admin/login",
@@ -39,12 +38,7 @@ const SignIn = () => {
 
   const formValidation = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Email is required"),
-    password: Yup.string()
-      .required("password is required")
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-      ),
+    password: Yup.string().required("password is required"),
   });
 
   const { touched, handleSubmit, values, handleChange, errors, setFieldValue } =
@@ -68,6 +62,9 @@ const SignIn = () => {
               <center>
                 <div className="image">
                   <img className="image-fluid w-auto" src={mainLogo} alt="" />
+                </div>
+                <div className="">
+                  <h2 className="text-white mb-5 mt-3">Sign In</h2>
                 </div>
               </center>
               <div className="form">
@@ -104,7 +101,11 @@ const SignIn = () => {
                         : ""}
                     </p>
                   </FormGroup>
-
+                  <div className="text-end">
+                    <Link to="/forgotPassword" className="text-white">
+                      Forgot Password
+                    </Link>
+                  </div>
                   <div className="text-end mt-5">
                     <Button type="submit" className="bg-info border-0 w-100">
                       {loading === "pending" ? <Spinner /> : "Create account"}

@@ -14,8 +14,7 @@ const UsersLogs = () => {
     "Method",
     "URL",
     "Res/Time",
-    "GST",
-    "User Ip",
+    "User IP",
     "Created At",
     "Status",
   ];
@@ -37,9 +36,9 @@ const UsersLogs = () => {
           <td style={{ fontSize: "13px" }}>{data?.method}</td>
           <td style={{ fontSize: "13px", width: "10px" }}>{data?.url}</td>
           <td style={{ fontSize: "13px" }}>{data?.responseTime}</td>
-          <td style={{ fontSize: "13px" }}>
+          {/* <td style={{ fontSize: "13px" }}>
             {moment(data?.timeInGST).format("DD-MMM-YYYY")}
-          </td>
+          </td> */}
           <td style={{ fontSize: "13px" }}>{data?.userIp}</td>
           <td style={{ fontSize: "13px" }}>
             {moment(data?.createdAt).format("DD-MMM-YYYY")}

@@ -4,6 +4,8 @@ import TopBar from "../../Shared/TopBar/index";
 import SignIn from "../../Pages/Auth/SignIn/index";
 import NavBar from "../../Shared/SideBar/HamBurger/NavBar/Index";
 import { useSelector } from "react-redux";
+import ForgotPassword from "../../Pages/Auth/forgotPassword/ForgotPassword";
+import NewPassword from "../../Pages/Auth/newPassword/Index";
 const GeneralLayout = (props) => {
   const { user } = useSelector((state) => state.user);
   const [isOpen, setIsOpen] = useState(false);
@@ -49,8 +51,7 @@ const GeneralLayout = (props) => {
           ) : (
             <>
               <Col md={12} className="vh-100">
-                <SignIn />
-              
+                <>{props.children}</>
               </Col>
             </>
           )}

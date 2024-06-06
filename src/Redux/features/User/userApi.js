@@ -39,6 +39,28 @@ export const changePassword = createAsyncThunk(
     }
   }
 );
+export const forgetPassword = createAsyncThunk(
+  "forgetPassword",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.post(apiEndpoint, requestData);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
+export const resetPassword = createAsyncThunk(
+  "resetPassword",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.post(apiEndpoint, requestData);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
 
 export const signUp = createAsyncThunk(
   "signUp",
@@ -109,7 +131,7 @@ export const userListing = createAsyncThunk(
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }
-)
+);
 export const userLogs = createAsyncThunk(
   "userLogs",
   async ({ apiEndpoint }, thunkAPI) => {
@@ -120,7 +142,7 @@ export const userLogs = createAsyncThunk(
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }
-)
+);
 export const UpLoadLogo = createAsyncThunk(
   "UpLoadLogo",
   async ({ apiEndpoint }, thunkAPI) => {
@@ -131,7 +153,7 @@ export const UpLoadLogo = createAsyncThunk(
       return thunkAPI.rejectWithValue(error?.response?.data);
     }
   }
-)
+);
 export const availableHits = createAsyncThunk(
   "availableHits",
   async ({ apiEndpoint }, thunkAPI) => {

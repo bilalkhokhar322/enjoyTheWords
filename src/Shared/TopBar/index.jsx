@@ -50,7 +50,7 @@ const TopBar = () => {
             </p>
           </div>
           <div className="image ms-2">
-            <i className="bellIcon">{bellIcon}</i>
+            {/* <i className="bellIcon">{bellIcon}</i>0 */}
 
             <Dropdown
               className="dropdownList"
