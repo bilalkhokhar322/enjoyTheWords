@@ -139,30 +139,6 @@ const UsersLogs = () => {
             >
               Search
             </Button>
-
-            {/* <Button
-              onClick={() => {
-                if (!selectedStartDate && !selectedEndDate) {
-                  toast.error("Start Date and End Date are Required");
-                } else if (!selectedStartDate && selectedEndDate) {
-                  toast.error("Start Date is Required");
-                } else if (selectedStartDate && !selectedEndDate) {
-                  toast.error("End Date is Required");
-                } else {
-                  fetchLogs();
-                }
-              }}
-              className="mb-1 mt-sm-0 mt-3 d-block w-100 bg-transparent border border-success"
-            >
-              Search
-            </Button> */}
-
-            {/* <Button
-              onClick={() => fetchLogs()}
-              className="mb-1 mt-sm-0 mt-3 d-block w-100 bg-transparent border border-success"
-            >
-              Search
-            </Button> */}
           </div>
         </Col>
       </Row>
