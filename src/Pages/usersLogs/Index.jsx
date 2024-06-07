@@ -7,6 +7,8 @@ import moment from "moment";
 import ReactPaginate from "react-paginate";
 import { PER_PAGE_SIZE } from "../../utils/constants";
 import { next, previous } from "../../Assets/icons";
+import { Button, Col, Input, Row } from "reactstrap";
+import { toast } from "react-toastify";
 
 const UsersLogs = () => {
   const tableHeadingArr = [
@@ -23,7 +25,8 @@ const UsersLogs = () => {
   const [tableData, setTableData] = useState([]);
   const [pageCount, setPageCount] = useState(1);
   const [currentPage, setCurrentPage] = useState(0);
-
+  const [selectedStartDate, setSelectedStartDate] = useState("");
+  const [selectedEndDate, setSelectedEndDate] = useState("");
   useEffect(() => {
     fetchLogs();
   }, [dispatch, currentPage]);
@@ -62,12 +65,14 @@ const UsersLogs = () => {
   const fetchLogs = () => {
     const pageNumber = currentPage + 1;
     const data = {
-      apiEndpoint: `/admin/logs?page=${pageNumber}&size=${PER_PAGE_SIZE}`,
+      apiEndpoint: `/admin/logs?page=${pageNumber}&size=${PER_PAGE_SIZE}&startDate=${selectedStartDate}&endDate=${selectedEndDate}`,
     };
     dispatch(userLogs(data)).then((res) => {
       if (res.type === "userLogs/fulfilled") {
         setLogsData(res?.payload?.data?.logs);
         setPageCount(res?.payload?.data?.totalLogs / PER_PAGE_SIZE);
+      } else {
+        toast.error(res?.payload?.data?.message);
       }
     });
   };
@@ -77,16 +82,97 @@ const UsersLogs = () => {
     setCurrentPage(selectedPage);
   };
 
+  const handleButtonClick = () => {
+    if (!selectedStartDate && !selectedEndDate) {
+      toast.error("Start Date and End Date are Required");
+    } else if (!selectedStartDate && selectedEndDate) {
+      toast.error("Start Date is Required");
+    } else if (selectedStartDate && !selectedEndDate) {
+      toast.error("End Date is Required");
+    } else {
+      fetchLogs();
+    }
+  };
+
+  console.log("selectedStartDate ---------->", selectedStartDate);
+  console.log("selectedEndDate ---------->", selectedEndDate);
+
   return (
     <>
-      <HeadingText className={"text-white display-5"} Text={"Users Logs"} />
+      <Row>
+        <Col lg={6} md={12} className="">
+          <HeadingText className={"text-white display-5"} Text={"Users Logs"} />
+        </Col>
+        <Col lg={2} md={5} sm={4}>
+          <label htmlFor="datePicker" className="text-white">
+            Start Date
+          </label>
+          <Input
+            type="date"
+            id="datePicker"
+            className="bg-transparent text-white"
+            value={selectedStartDate}
+            onChange={(e) => setSelectedStartDate(e.target.value)}
+          />
+        </Col>
+        <Col lg={2} md={5} sm={4}>
+          <label htmlFor="datePicker" className="text-white">
+            End Date
+          </label>
+          <Input
+            type="date"
+            id="datePicker"
+            className="bg-transparent text-white"
+            value={selectedEndDate}
+            onChange={(e) => setSelectedEndDate(e.target.value)}
+          />
+        </Col>
+        <Col
+          md={2}
+          sm={4}
+          className="d-flex justify-content-end align-content-end "
+        >
+          <div className="w-100 d-flex justify-content-end align-content-end flex-column">
+            <Button
+              onClick={handleButtonClick}
+              className="mb-1 mt-sm-0 mt-3 d-block w-100 bg-transparent border border-success"
+            >
+              Search
+            </Button>
+
+            {/* <Button
+              onClick={() => {
+                if (!selectedStartDate && !selectedEndDate) {
+                  toast.error("Start Date and End Date are Required");
+                } else if (!selectedStartDate && selectedEndDate) {
+                  toast.error("Start Date is Required");
+                } else if (selectedStartDate && !selectedEndDate) {
+                  toast.error("End Date is Required");
+                } else {
+                  fetchLogs();
+                }
+              }}
+              className="mb-1 mt-sm-0 mt-3 d-block w-100 bg-transparent border border-success"
+            >
+              Search
+            </Button> */}
+
+            {/* <Button
+              onClick={() => fetchLogs()}
+              className="mb-1 mt-sm-0 mt-3 d-block w-100 bg-transparent border border-success"
+            >
+              Search
+            </Button> */}
+          </div>
+        </Col>
+      </Row>
       <UserTable headerData={tableHeadingArr} bodyData={tableData} />
 
       {logsData.length > 0 && (
         <ReactPaginate
           pageCount={Math.ceil(pageCount)} // Total number of pages
           pageRangeDisplayed={3} // Number of page links to display
-          marginPagesDisplayed={3} // Number of pages to display at the margins
+          marginPagesDisplayed={2} // Number of pages to display at the margins
           onPageChange={handlePageClick} // Function to handle page click
           containerClassName={"pagination"}
           activeClassName={"active"}

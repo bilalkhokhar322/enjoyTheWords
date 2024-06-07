@@ -6,13 +6,11 @@ const Captcha = () => {
 
   const handleCaptchaVerification = (value) => {
     if (value) {
-      console.log("value----->", value);
       setCaptchaValue(value);
       setIsVerified(true);
     }
   };
-  console.log("isVerified -------------- >", isVerified);
-  console.log("capValue -------------- >", captchaValue);
+
   return (
     <div>
       <form>

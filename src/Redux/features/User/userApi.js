@@ -61,6 +61,17 @@ export const resetPassword = createAsyncThunk(
     }
   }
 );
+export const getPreviousHits = createAsyncThunk(
+  "getPreviousHits",
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(apiEndpoint, requestData);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
 
 export const signUp = createAsyncThunk(
   "signUp",
@@ -143,6 +154,17 @@ export const userLogs = createAsyncThunk(
     }
   }
 );
+export const allSongs = createAsyncThunk(
+  "allSongs",
+  async ({ apiEndpoint }, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get(apiEndpoint);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error?.response?.data);
+    }
+  }
+);
 export const UpLoadLogo = createAsyncThunk(
   "UpLoadLogo",
   async ({ apiEndpoint }, thunkAPI) => {
@@ -156,9 +178,9 @@ export const UpLoadLogo = createAsyncThunk(
 );
 export const availableHits = createAsyncThunk(
   "availableHits",
-  async ({ apiEndpoint }, thunkAPI) => {
+  async ({ apiEndpoint, requestData }, thunkAPI) => {
     try {
-      const response = await axiosInstance.put(apiEndpoint);
+      const response = await axiosInstance.put(apiEndpoint, requestData);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error?.response?.data);

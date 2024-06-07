@@ -63,7 +63,6 @@ const UploadLogo = () => {
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",
                         overflow: "hidden",
-                        // backgroundPosition: "center center",
                       }}
                     ></div>
                   </center>

@@ -14,6 +14,8 @@ import {
   availableHits,
   forgetPassword,
   resetPassword,
+  getPreviousHits,
+  allSongs,
 } from "./userApi";
 
 export const userSlice = createSlice({
@@ -97,6 +99,18 @@ export const userSlice = createSlice({
       })
 
       .addCase(resetPassword.rejected, (state) => {
+        state.loading = "failed";
+      })
+      .addCase(getPreviousHits.pending, (state) => {
+        state.loading = "pending";
+      })
+
+      .addCase(getPreviousHits.fulfilled, (state, action) => {
+        state.loading = "succeeded";
+        state.email = action.payload;
+      })
+
+      .addCase(getPreviousHits.rejected, (state) => {
         state.loading = "failed";
       })
 
@@ -193,6 +207,17 @@ export const userSlice = createSlice({
       })
 
       .addCase(UpLoadLogo.rejected, (state) => {
+        state.loading = "failed";
+      })
+      .addCase(allSongs.pending, (state) => {
+        state.loading = "pending";
+      })
+
+      .addCase(allSongs.fulfilled, (state, action) => {
+        state.loading = "succeeded";
+      })
+
+      .addCase(allSongs.rejected, (state) => {
         state.loading = "failed";
       })
       .addCase(availableHits.pending, (state) => {

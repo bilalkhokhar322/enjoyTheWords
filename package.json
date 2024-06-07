@@ -2,7 +2,7 @@
   "name": "react-boiler-plate",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://192.168.0.238:3000/",
+  "proxy": "http://192.168.3.108:3000/",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.3",
     "@testing-library/jest-dom": "^5.17.0",
