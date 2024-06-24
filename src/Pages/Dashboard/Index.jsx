@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import MainCard from "../../Shared/mianCard/Index";
 import { Col, Row } from "reactstrap";
 import {
@@ -8,63 +8,35 @@ import {
   verified,
   user,
 } from "../../Assets/icons/index";
-import { useDispatch } from "react-redux";
-import { allSongs } from "../../Redux/features/User/userApi";
-import { toast } from "react-toastify";
 const Dashboard = () => {
-  const dispatch = useDispatch();
-  const [users, setUsers] = useState();
-  const [usersLogs, setUsersLogs] = useState();
-  const [song, setSong] = useState();
-  const [verifiedUsers, setVerifiedUsers] = useState();
-  const [notVerifiedUsers, setNotVerifiedUsers] = useState();
-
   const cardItems = [
     {
       icon: user,
       name: "Users",
-      num: users,
+      num: 5,
     },
     {
       icon: Customer,
       name: "Users Logs",
-      num: usersLogs,
+      num: 7,
     },
     {
       icon: songs,
       name: "Songs",
-      num: song,
+      num: 1,
     },
     {
       icon: verified,
       name: "Verified",
-      num: verifiedUsers,
+      num: 4,
     },
     {
       icon: notVerified,
       name: "Not Verified",
-      num: notVerifiedUsers,
+      num: 0,
     },
   ];
 
-  const handleUsersList = () => {
-    const data = {
-      apiEndpoint: `admin/dashboardCounts`,
-    };
-    dispatch(allSongs(data)).then((res) => {
-      if (res.type === "allSongs/fulfilled") {
-        setUsers(res?.payload?.data?.user);
-        setUsersLogs(res?.payload?.data?.log);
-        setSong(res?.payload?.data?.songs);
-        setVerifiedUsers(res?.payload?.data?.verifiedUser);
-        setNotVerifiedUsers(res?.payload?.data?.unVerifiedUser);
-      }
-    });
-  };
-
-  useEffect(() => {
-    handleUsersList();
-  }, [users]);
   return (
     <>
       <Row className="m-0">
