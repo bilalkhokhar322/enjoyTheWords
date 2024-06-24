@@ -116,9 +116,9 @@ const NewPassword = () => {
                       <MainInput
                         Label="Enter Your Code"
                         className="rounded-3 fw-bold"
-                        type="text" // Change type to text
-                        inputMode="numeric" // Set input mode to numeric
-                        pattern="[0-9]*" // Set pattern to allow only numeric input
+                        type="text"   
+                        inputMode="numeric" 
+                        pattern="[0-9]*" 
                         name="token"
                         value={values?.token}
                         onChange={handleChange}

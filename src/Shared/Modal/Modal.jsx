@@ -11,8 +11,6 @@ const MainModal = ({
   cancelToggle,
   CancelBtn,
 }) => {
-
-
   return (
     <div>
       <div onClick={toggleModal}>{children}</div>

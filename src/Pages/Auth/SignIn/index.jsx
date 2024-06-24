@@ -108,7 +108,7 @@ const SignIn = () => {
                   </div>
                   <div className="text-end mt-5">
                     <Button type="submit" className="bg-info border-0 w-100">
-                      {loading === "pending" ? <Spinner /> : "Create account"}
+                      {loading === "pending" ? <Spinner /> : "Sign In"}
                     </Button>
                   </div>
                 </Form>

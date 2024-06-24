@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import HamBurgerButton from "../HamBurgerButton";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   dashboard,
-  permissions,
-  management,
   userIcon,
   userLogs,
   upload,
@@ -19,16 +17,6 @@ const NavBar = ({ toggle, onClick }) => {
       to: "/dashboard",
       icon: dashboard,
     },
-    // {
-    //   name: "Permissions",
-    //   to: "/permissions",
-    //   icon: permissions,
-    // },
-    // {
-    //   name: "Management",
-    //   to: "/management",
-    //   icon: management,
-    // },
     {
       name: "Users  ",
       to: "/user",
@@ -50,11 +38,6 @@ const NavBar = ({ toggle, onClick }) => {
       to: "/availableHits",
       icon: availableHits,
     },
-    // {
-    //   name: "Captcha",
-    //   to: "/captcha",
-    //   icon: availableHits,
-    // },
   ];
 
   return (

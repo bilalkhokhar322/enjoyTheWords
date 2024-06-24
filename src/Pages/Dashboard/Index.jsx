@@ -27,7 +27,7 @@ const Dashboard = () => {
     },
     {
       icon: Customer,
-      name: "User Logs",
+      name: "Users Logs",
       num: usersLogs,
     },
     {
@@ -53,9 +53,7 @@ const Dashboard = () => {
     };
     dispatch(allSongs(data)).then((res) => {
       if (res.type === "allSongs/fulfilled") {
-        console.log("allSongs", res?.payload?.data);
         setUsers(res?.payload?.data?.user);
-        console.log(res?.payload?.data?.user);
         setUsersLogs(res?.payload?.data?.log);
         setSong(res?.payload?.data?.songs);
         setVerifiedUsers(res?.payload?.data?.verifiedUser);

@@ -39,9 +39,6 @@ const UsersLogs = () => {
           <td style={{ fontSize: "13px" }}>{data?.method}</td>
           <td style={{ fontSize: "13px", width: "10px" }}>{data?.url}</td>
           <td style={{ fontSize: "13px" }}>{data?.responseTime}</td>
-          {/* <td style={{ fontSize: "13px" }}>
-            {moment(data?.timeInGST).format("DD-MMM-YYYY")}
-          </td> */}
           <td style={{ fontSize: "13px" }}>{data?.userIp}</td>
           <td style={{ fontSize: "13px" }}>
             {moment(data?.createdAt).format("DD-MMM-YYYY")}
@@ -93,10 +90,6 @@ const UsersLogs = () => {
       fetchLogs();
     }
   };
-
-  console.log("selectedStartDate ---------->", selectedStartDate);
-  console.log("selectedEndDate ---------->", selectedEndDate);
-
   return (
     <>
       <Row>
@@ -143,7 +136,6 @@ const UsersLogs = () => {
         </Col>
       </Row>
       <UserTable headerData={tableHeadingArr} bodyData={tableData} />
-
       {logsData.length > 0 && (
         <ReactPaginate
           pageCount={Math.ceil(pageCount)} // Total number of pages

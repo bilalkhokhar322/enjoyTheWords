@@ -12,18 +12,6 @@ const Permissions = () => {
     "Upload",
   ];
 
-
-  // const handleCheckboxChange = (event) => {     // this code save inputs Values
-  //   const value = event.target.value;
-  //   const isChecked = event.target.checked;
-
-  //   if (isChecked) {
-  //     setPermissionData([...permissionData, value]);
-  //   } else {
-  //     setPermissionData(permissionData.filter((item) => item !== value));
-  //   }
-  // };
-
   const handleCheckboxChange = (event, index) => {
     const isChecked = event.target.checked;
 
@@ -48,7 +36,6 @@ const Permissions = () => {
                 id={`checkbox-${index + 1}`}
                 type="checkbox"
                 value={item}
-                // onChange={handleCheckboxChange} // values getting
                 onChange={(e) => handleCheckboxChange(e, index + 1)}
                 checked={permissionData.includes(index + 1)}
               />

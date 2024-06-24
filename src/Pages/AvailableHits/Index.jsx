@@ -47,7 +47,6 @@ const AvailableHitsUsers = () => {
         count: availableHitsNum ? availableHitsNum : 0,
       },
       validationSchema: formValidation,
-      // enableReinitialize: true,
       onSubmit(values) {
         HandleHitsUsers(values);
       },
@@ -59,8 +58,7 @@ const AvailableHitsUsers = () => {
       setFieldValue("count", availableHitsNum);
     }
   }, [availableHitsNum]);
-  console.log(typeof availableHitsNum);
-  console.log(values);
+
   return (
     <>
       <HeadingText className={"text-white"} Text={"Control User List"} />
