@@ -16,6 +16,7 @@ export const login = createAsyncThunk(
   }
 );
 
+
 export const logout = createAsyncThunk(
   "logout",
   async ({ apiEndpoint, requestData }, thunkAPI) => {
