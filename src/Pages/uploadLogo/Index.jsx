@@ -3,24 +3,17 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 import { Button, Col, Form, FormGroup, Input, Label } from "reactstrap";
 import uploadImageIcon from "../../Assets/gallery/uploadLogo.png";
-;
-
 const UploadLogo = () => {
-
   const validation = Yup.object().shape({
-    logo: Yup.string().required("Image is required"), //
+    logo: Yup.string().required("Image is required"),
   });
-
-
 
   const { handleSubmit, values, errors, setFieldValue } = useFormik({
     initialValues: {
-      logo: null, //
+      logo: null,
     },
     validationSchema: validation,
-    onSubmit: (values) => {
-      
-    },
+    onSubmit: (values) => {},
   });
 
   return (
@@ -37,7 +30,7 @@ const UploadLogo = () => {
                       style={{
                         width: "150px",
                         height: "150px",
-                        backgroundImage: `url(${uploadImageIcon})`, // Corrected syntax
+                        backgroundImage: `url(${uploadImageIcon})`,
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",
                         overflow: "hidden",
@@ -48,7 +41,7 @@ const UploadLogo = () => {
                     id="upload"
                     type="file"
                     name="image"
-                    onChange={''}
+                    onChange={""}
                     className="d-none"
                   />
                 </Label>
@@ -56,7 +49,6 @@ const UploadLogo = () => {
                   className="bg-transparent"
                   onClick={handleSubmit}
                   type="submit"
-                  // disabled={values.logo === null}
                 >
                   Upload
                 </Button>
